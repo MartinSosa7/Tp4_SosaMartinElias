@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
+<title>TP 4 PROGRAMACION VISUAL</title>
+<style>
+  html, body {
+    height: 100%;
+    background-color: #ecfeff
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .container-fluid2 {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+  <header class="row py-3 text-white" style="background-color: #164e63">
+		<div class="col-4 ps-4">
+            <img src="/images/fi-logo.png" alt="Logotipo de la Facultad">
+        </div>
+        <div class="col-4 fs-1">Facultad de Programacion</div>
+        <div class="col-4 fs-2">"Eslogan o Lema de la Facultad"</div>
+		  	
+  </header>
+
+  <div class="container-fluid container-fluid2">
+  
+  	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{fragments/header::navbar}"></div>
+  		</div>
+  	</div>
+  	
+    <div class="row" style="height: 100%">
+      
+      <div class="col-9" >
+        	<main>	
+        		
+        			<section class="row py-3">
+        				<p>
+        					<strong>FACULTAD DE PROGRAMACION</strong> 
+        					
+							La Facultad de Programación de la Universidad Nacional De Jujuy es un centro de excelencia académica dedicado a la formación de profesionales en el ámbito de las tecnologías de la información y la comunicación. Fundada en el año 2000, nuestra facultad se ha consolidado como líder en la educación superior, ofreciendo programas de grado y posgrado que están a la vanguardia de la innovación tecnológica.
+							
+							Nuestra misión es proporcionar a los estudiantes una educación integral que combine teoría y práctica, preparando a nuestros graduados para enfrentar los desafíos del mundo digital. Contamos con un cuerpo docente de renombre, compuesto por académicos y profesionales de la industria que aportan su vasta experiencia y conocimientos al aula.
+							
+							La facultad ofrece una amplia variedad de programas, incluyendo Licenciatura en Ciencias de la Computación, Ingeniería de Software, y Maestría en Inteligencia Artificial. Cada programa está diseñado para fomentar el pensamiento crítico, la resolución de problemas y la creatividad, habilidades esenciales en el dinámico campo de la programación.
+							
+							Nuestras instalaciones de última generación incluyen laboratorios de computación, centros de investigación y desarrollo, y espacios de coworking, todos equipados con las tecnologías más avanzadas. Además, promovemos la colaboración interdisciplinaria y la conexión con la industria a través de prácticas profesionales, proyectos de investigación y eventos con líderes del sector tecnológico.
+							
+							En la Facultad de Programación, nos comprometemos a impulsar la próxima generación de innovadores tecnológicos, preparados para contribuir al desarrollo sostenible y al avance de la sociedad digital.
+        				</p>
+        				
+        				
+        			</section>
+        		
+        			<section class="row py-5">
+        				
+        					<div class="card-group">
+								  <div class="card">
+								    
+								    <div class="card-body" style="background-color: #a5f3fc">
+								      <h5 class="card-title">Noticia 1</h5>
+								      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+								    </div>
+								  </div>
+								  <div class="card">
+								    
+								    <div class="card-body" style="background-color: #a5f3fc">
+								      <h5 class="card-title">Noticia 2</h5>
+								      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+								      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+								    </div>
+								  </div>
+								  <div class="card">
+								    
+								    <div class="card-body" style="background-color: #a5f3fc">
+								      <h5 class="card-title">Noticia 3</h5>
+								      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+								      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+								    </div>
+								  </div>
+							</div>
+        			</section>
+        		
+        	</main>
+     </div>
+      
+      
+     <div class="col-3 py-2">
+        <aside>
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action py-4" style="background-color: #22d3ee">Biblioteca</a>
+            <a href="#" class="list-group-item list-group-item-action py-4">Calendario Academico</a>
+            <a href="#" class="list-group-item list-group-item-action py-4" style="background-color: #22d3ee">Mesa de Examanenes</a>
+          	<a href="#" class="list-group-item list-group-item-action py-4">Agenda</a>
+          </div>
+        </aside>
+     </div>
+      
+    </div>
+    
+    
+  </div>
+
+  <footer class="bg-dark text-white mt-0">
+    <div data-th-replace="~{fragments/header::footer}"></div>
+  </footer>
+
+  <script type="text/javascript" data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

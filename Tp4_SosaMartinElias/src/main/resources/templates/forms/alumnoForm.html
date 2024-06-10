@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
+<title>TP 4 PROGRAMACION VISUAL</title>
+<style>
+  html, body {
+    height: 100%;
+    background-color: #ecfeff
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .container-fluid2 {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+ <div class="container-fluid container-fluid2">
+ 
+ 		<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::header}"></div>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::navbar}"></div>
+  		</div>
+  	</div>
+ 	
+  <h2>Formulario de Alumno</h2>
+  <form th:object="${alumno}"
+  		th:action="@{/alumno/guardar}"
+  		th:method="POST"
+  >
+    <div class="form-group">
+      <label for="dni">DNI:</label>
+      <input type="number" class="form-control" id="dni" name="dni" th:field="*{dni}">
+    </div>
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" class="form-control" id="name" name="name" th:field="*{name}">
+    </div>
+    <div class="form-group">
+      <label for="surName">Apellido:</label>
+      <input type="text" class="form-control" id="surName" name="surName" th:field=*{surName}>
+    </div>
+    <div class="form-group">
+      <label for="email">Correo Electrónico:</label>
+      <input type="email" class="form-control" id="email" name="email" th:field="*{email}">
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Teléfono:</label>
+      <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}">
+    </div>
+    <div class="form-group">
+      <label for="birthday">Fecha de Nacimiento:</label>
+      <input type="date" class="form-control" id="birthday" name="birthday" th:field="*{birthday}">
+    
+    </div>
+    <div class="form-group">
+      <label for="address">Dirección:</label>
+      <textarea class="form-control" id="address" name="address" rows="3" th:field="*{address}"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="lu">LU (Libreta Universitaria):</label>
+      <input type="text" class="form-control" id="lu" name="lu" th:field="*{lu}" th:readonly="${method} eq 'PUT'">
+    </div>
+    <button type="submit" class="btn btn-success" th:if="${method} eq 'POST'">Guardar</button>
+    <button type="submit" class="btn btn-warning" th:if="${method} eq 'PUT'">Modificar</button>
+    <a class="btn btn-secondary" th:href="@{/alumno/listado}">Ver lista</a>
+    
+  </form>
+</div>
+
+ <footer class="bg-dark text-white mt-0">
+    <div data-th-replace="~{layout/footer::footer}"></div>
+  </footer>
+  
+<script type="text/javascript" data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

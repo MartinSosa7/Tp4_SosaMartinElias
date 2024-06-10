@@ -9,6 +9,15 @@ public class CarreraCollection {
 
 	static List<Carrera> listadoCarrera = new ArrayList<>();
 	
+	static {
+		listadoCarrera.add(new Carrera("UNJU001","APU",16,"ACTIVA"));
+		listadoCarrera.add(new Carrera("UNJU002","INGENIERA INFO",20,"ACTIVA"));
+	}
+	
+	public static void addCarrera(Carrera carrera) {
+		listadoCarrera.add(carrera);
+	}
+	
 	public static List<Carrera> getAll(){
 		return listadoCarrera;
 	}
@@ -22,9 +31,11 @@ public class CarreraCollection {
 	}
 	
 	public static void modifyCarrera(Carrera carreraModificada) {
-		for (Carrera carrera : listadoCarrera) {
-			if(carrera.getCode().equals(carreraModificada.getCode()))
-				carrera = carreraModificada;
+		for (int i = 0; i < listadoCarrera.size(); i++) {
+			if(carreraModificada.getCode().equals(listadoCarrera.get(i).getCode())) {
+				listadoCarrera.set(i, carreraModificada);
+				break;
+			}
 		}
 	}
 	

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
+<title>TP 4 PROGRAMACION VISUAL</title>
+<style>
+  html, body {
+    height: 100%;
+    background-color: #ecfeff
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .container-fluid2 {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="container-fluid container-fluid2">
+	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::header}"></div>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::navbar}"></div>
+  		</div>
+  	</div>
+
+    <h2>Formulario de Materia</h2>
+    <form th:object="${materia}" 
+          th:action="@{/materia/guardar}"
+          method="post">
+        <div class="form-group">
+            <label for="code">Código:</label>
+            <input type="text" class="form-control" id="code" name="code" th:field="*{code}" th:readonly="${method} eq 'PUT'">
+        </div>
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" class="form-control" id="name" name="name" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label for="curso">Curso:</label>
+            <input type="text" class="form-control" id="curso" name="curso" th:field="*{curso}">
+        </div>
+        <div class="form-group">
+            <label for="hoursAmount">Cantidad de Horas:</label>
+            <input type="number" class="form-control" id="hoursAmount" name="hoursAmount" th:field="*{hoursAmount}">
+        </div>
+        <div class="form-group">
+            <label for="modality">Modalidad:</label>
+            <select class="form-control" id="modality" name="modality" th:field="*{modality}">
+                <option value="Virtual">Virtual</option>
+                <option value="Presencial">Presencial</option>
+                <option value="Mixto">Mixto</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="docente">Docente:</label>
+            <select class="form-control" id="docente" name="docente" th:field="*{docente.legajo}">
+                <option th:each="docente : ${docentesArray}" 
+                        th:value="${docente.legajo}" 
+                        th:text="${docente.name} + ' ' + ${docente.surName}"></option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="course">Carrera:</label>
+            <select class="form-control" id="course" name="course" th:field="*{course.code}">
+                <option th:each="carrera : ${carrerasArray}" 
+                        th:value="${carrera.code}" 
+                        th:text="${carrera.name}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success" th:if="${method} eq 'POST'">Guardar</button>
+        <button type="submit" class="btn btn-warning" th:if="${method} eq 'PUT'">Modificar</button>
+        <a class="btn btn-secondary" th:href="@{/materia/listado}">Ver lista</a>
+    </form>
+</div>
+
+<footer class="bg-dark text-white mt-0">
+    <div data-th-replace="~{layout/footer::footer}"></div>
+  </footer>
+
+<script type="text/javascript" data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

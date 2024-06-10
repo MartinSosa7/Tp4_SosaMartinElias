@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
+<title>TP 4 PROGRAMACION VISUAL</title>
+<style>
+  html, body {
+    height: 100%;
+    background-color: #ecfeff
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .container-fluid2 {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+<div class="container-fluid container-fluid2">
+
+	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::header}"></div>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::navbar}"></div>
+  		</div>
+  	</div>
+  	
+  <div class="row">
+  	<div class="col-6"><h2>Tabla de Datos</h2></div>
+  	<div class="col-6"><a class="btn btn-primary" th:href="@{/docente/formularioDocente}">Agregar Docente</a></div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Legajo</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo Electrónico</th>
+        <th>Teléfono</th>
+        <th>opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="d : ${listadoArray}">
+        <td th:text="${d.legajo}"></td>
+        <td th:text="${d.name}"></td>
+        <td th:text="${d.surName}"></td>
+        <td th:text="${d.email}"></td>
+        <td th:text="${d.phoneNumber}"></td>
+        <td><a th:href="@{/docente/eliminar/}+${d.legajo}" class="btn btn-danger">Eliminar</a>  <a class="btn btn-warning" th:href="@{/docente/modificar/}+${d.legajo}">Modificar</a></td>
+      </tr>
+      </tbody>
+  </table>
+</div>
+
+ <footer class="bg-dark text-white mt-0">
+    <div data-th-replace="~{layout/footer::footer}"></div>
+  </footer>
+
+
+
+ <script type="text/javascript" data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

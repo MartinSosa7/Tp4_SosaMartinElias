@@ -20,20 +20,17 @@
 </head>
 <body>
 
-  <header class="row py-3 text-white" style="background-color: #164e63">
-		<div class="col-4 ps-4">
-            <img src="/images/fi-logo.png" alt="Logotipo de la Facultad">
-        </div>
-        <div class="col-4 fs-1">Facultad de Programacion</div>
-        <div class="col-4 fs-2">"Eslogan o Lema de la Facultad"</div>
-		  	
-  </header>
 
   <div class="container-fluid container-fluid2">
   
   	<div class="row">
   		<div class="col-12">
-  			<div data-th-replace="~{fragments/header::navbar}"></div>
+  			<div data-th-replace="~{layout/header::header}"></div>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::navbar}"></div>
   		</div>
   	</div>
   	
@@ -111,7 +108,7 @@
   </div>
 
   <footer class="bg-dark text-white mt-0">
-    <div data-th-replace="~{fragments/header::footer}"></div>
+    <div data-th-replace="~{layout/footer::footer}"></div>
   </footer>
 
   <script type="text/javascript" data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>

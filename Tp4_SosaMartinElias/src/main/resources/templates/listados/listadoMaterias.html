@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
+<title>TP 4 PROGRAMACION VISUAL</title>
+<style>
+  html, body {
+    height: 100%;
+    background-color: #ecfeff
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .container-fluid2 {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="container-fluid container-fluid2">
+	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::header}"></div>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::navbar}"></div>
+  		</div>
+  	</div>
+	
+  <div class="row">
+  	<div class="col-6"><h2>Tabla de Datos</h2></div>
+  	<div class="col-6"><a class="btn btn-primary" th:href="@{/materia/formularioMateria}">Agregar Materia</a></div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>codigo</th>
+        <th>Nombre</th>
+        <th>curso</th>
+        <th>cantidad horas</th>
+        <th>modalidad</th>
+        <th>Docente</th>
+        <th>Carrera</th>
+        <th>opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="m : ${listadoArray}">
+        <td th:text="${m.code}"></td>
+        <td th:text="${m.name}"></td>
+        <td th:text="${m.curso}"></td>
+        <td th:text="${m.hoursAmount}"></td>
+        <td th:text="${m.modality}"></td>
+        <td th:text="${m.docente.name} + ' ' + ${m.docente.surName}"></td>
+        <td th:text="${m.course.name}"></td>
+        <td><a th:href="@{/materia/eliminar/}+${m.code}" class="btn btn-danger">Eliminar</a>  <a class="btn btn-warning" th:href="@{/materia/modificar/}+${m.code}">Modificar</a></td>
+      </tr>
+      </tbody>
+  </table>
+</div>
+
+<footer class="bg-dark text-white mt-0">
+    <div data-th-replace="~{layout/footer::footer}"></div>
+  </footer>
+
+
+
+ <script type="text/javascript" data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

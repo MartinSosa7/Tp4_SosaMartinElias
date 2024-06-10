@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
+<title>TP 4 PROGRAMACION VISUAL</title>
+<style>
+  html, body {
+    height: 100%;
+    background-color: #ecfeff
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .container-fluid2 {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+	<div class="container-fluid container-fluid2">
+	
+	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::header}"></div>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-12">
+  			<div data-th-replace="~{layout/header::navbar}"></div>
+  		</div>
+  	</div>
+	
+  <div class="row">
+  	<div class="col-6"><h2>Tabla de Datos</h2></div>
+  	<div class="col-6"><a class="btn btn-primary" th:href="@{/alumno/formularioAlumno}">Agregar Alumno</a></div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo Electrónico</th>
+        <th>Teléfono</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Dirección</th>
+        <th>LU (Libreta Universitaria)</th>
+        <th>opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="a : ${listadoArray}">
+        <td th:text="${a.dni}"></td>
+        <td th:text="${a.name}"></td>
+        <td th:text="${a.surName}"></td>
+        <td th:text="${a.email}"></td>
+        <td th:text="${a.phoneNumber}"></td>
+        <td th:text="${a.birthday}"></td>
+        <td th:text="${a.address}"></td>
+        <td th:text="${a.lu}"></td>
+        <td><a th:href="@{/alumno/eliminar/}+${a.lu}" class="btn btn-danger">Eliminar</a>  <a class="btn btn-warning" th:href="@{/alumno/modificar/}+${a.lu}">Modificar</a></td>
+      </tr>
+      </tbody>
+  </table>
+</div>
+	
+ <footer class="bg-dark text-white mt-0">
+    <div data-th-replace="~{layout/footer::footer}"></div>
+  </footer>
+
+
+
+ <script type="text/javascript" data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

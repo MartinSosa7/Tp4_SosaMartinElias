@@ -9,26 +9,30 @@ public class MateriaCollection {
 
 	static List<Materia> listadoMaterias = new ArrayList<>();
 	
+	public static void addMateria(Materia materia) {
+		listadoMaterias.add(materia);
+	}
+	
 	public static List<Materia> getAll(){
 		return listadoMaterias;
 	}
 	
-	public static Materia findMateriaByName(String name) {
+	public static Materia findMateriaByCode(String code) {
 		for (Materia materia : listadoMaterias) {
-			if(materia.getName().equals(name))
+			if(materia.getCode().equals(code));
 				return materia;
 		}
 		return null;
 	}
 	
 	public static void modifyMateria(Materia materiaMoficada) {
-		
-		for (Materia materia : listadoMaterias) {
-			if(materia.getCode().equals(materiaMoficada.getCode())) {
-				materia = materiaMoficada;
+		for (int i = 0; i < listadoMaterias.size(); i++) {
+			if (listadoMaterias.get(i).getCode().equals(materiaMoficada.getCode())) {
+				listadoMaterias.set(i, materiaMoficada);
+				break;
 			}
+			
 		}
-		
 	}
 	
 	public static void deleteMateriaByCode(String code) {
